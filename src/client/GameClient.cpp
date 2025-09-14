@@ -31,6 +31,7 @@ bool GameClient::connect(const std::string& serverAddress, uint16_t serverPort) 
     std::cout << "Connecting to server " << serverAddress << ":" << serverPort << std::endl;
     
     serverConnection = Network::ConnectionInfo(serverAddress, serverPort);
+    serverConnection.connected = true;  // Mark as connected for sending packets
     
     if (!initialize("0.0.0.0", 0)) { // Bind to any available port
         std::cerr << "Failed to initialize client network" << std::endl;
